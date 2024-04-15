@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factory-rabbit-builder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: factory-rabbit-builder
+  template:
+    metadata:
+      labels:
+        app: factory-rabbit-builder
+    spec:
+      containers:
+        - name: my-spring-boot-app
+          image: rabbitproduce:latest   # Yerel olarak oluşturduğunuz Docker imajının adı
+          ports:
+            - containerPort: 8080
